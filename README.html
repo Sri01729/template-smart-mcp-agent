@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="template-smart-mcp-agent">Template Smart MCP Agent</h1>
+<p>A Mastra template for smart AI agents that dynamically discover, install, and use Model Context Protocol (MCP) servers at runtime.</p>
+<h2 id="%F0%9F%9A%80-features">🚀 Features</h2>
+<ul>
+<li><strong>Dynamic MCP Server Management</strong>: AI agent can discover and add MCP servers from Smithery registry</li>
+<li><strong>Runtime Configuration</strong>: Servers are added directly to the codebase via file modification</li>
+<li><strong>Persistent Storage</strong>: Server configurations persist across restarts</li>
+<li><strong>Smithery Integration</strong>: Seamless integration with Smithery MCP server registry</li>
+<li><strong>File System Access</strong>: Built-in filesystem MCP server for project file operations</li>
+</ul>
+<h2 id="%F0%9F%93%8B-prerequisites">📋 Prerequisites</h2>
+<ul>
+<li>Node.js 20.9.0 or higher</li>
+<li>npm or pnpm package manager</li>
+<li>API keys for AI providers (OpenAI, Anthropic, etc.)</li>
+</ul>
+<h2 id="%F0%9F%9B%A0%EF%B8%8F-installation">🛠️ Installation</h2>
+<ol>
+<li>
+<p><strong>Clone the template</strong>:</p>
+<pre class="hljs"><code><div>git <span class="hljs-built_in">clone</span> &lt;repository-url&gt;
+<span class="hljs-built_in">cd</span> template-agents-app-store-mcp-server
+</div></code></pre>
+</li>
+<li>
+<p><strong>Install dependencies</strong>:</p>
+<pre class="hljs"><code><div>npm install
+</div></code></pre>
+</li>
+<li>
+<p><strong>Configure environment variables</strong>:</p>
+<pre class="hljs"><code><div>cp .env.example .env
+</div></code></pre>
+<p>Edit <code>.env</code> and add your API keys:</p>
+<pre class="hljs"><code><div>OPENAI_API_KEY=your_openai_key_here
+ANTHROPIC_API_KEY=your_anthropic_key_here
+PERPLEXITY_API_KEY=your_perplexity_key_here
+SMITHERY_API_KEY=your_smithery_key_here
+</div></code></pre>
+</li>
+</ol>
+<h2 id="%F0%9F%9A%80-usage">🚀 Usage</h2>
+<h3 id="development-mode">Development Mode</h3>
+<p>Start the development server:</p>
+<pre class="hljs"><code><div>npm run dev
+</div></code></pre>
+<p>The Mastra playground will be available at <code>http://localhost:4112</code></p>
+<h3 id="production-build">Production Build</h3>
+<p>Build for production:</p>
+<pre class="hljs"><code><div>npm run build
+</div></code></pre>
+<p>Start production server:</p>
+<pre class="hljs"><code><div>npm start
+</div></code></pre>
+<h2 id="%F0%9F%A4%96-agent-capabilities">🤖 Agent Capabilities</h2>
+<p>The <strong>App Store Agent</strong> provides the following tools:</p>
+<h3 id="core-tools">Core Tools</h3>
+<ul>
+<li><strong><code>discover-servers</code></strong>: Search for MCP servers on Smithery registry</li>
+<li><strong><code>add-mcp-server</code></strong>: Dynamically add a server to the MCP configuration</li>
+<li><strong><code>list-servers</code></strong>: List all currently configured MCP servers</li>
+</ul>
+<h3 id="mcp-server-tools">MCP Server Tools</h3>
+<p>The agent has access to tools from configured MCP servers:</p>
+<ul>
+<li><strong>Filesystem tools</strong>: File and directory operations</li>
+<li><strong>GeekNews tools</strong>: Technology news and articles</li>
+<li><strong>Cultural Heritage tools</strong>: Cultural and historical information</li>
+<li><strong>Sequential Thinking tools</strong>: Advanced reasoning capabilities</li>
+<li><strong>A-Share Stock Market tools</strong>: Chinese stock market data</li>
+<li><strong>Visual Reasoning tools</strong>: Image analysis and reasoning</li>
+</ul>
+<h2 id="%F0%9F%94%A7-api-reference">🔧 API Reference</h2>
+<h3 id="agent-configuration">Agent Configuration</h3>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { smartMcpAgent } <span class="hljs-keyword">from</span> <span class="hljs-string">'./src/mastra/agents/smart-mcp-agent'</span>;
+
+<span class="hljs-comment">// Agent is configured with:</span>
+<span class="hljs-comment">// - OpenAI GPT-4o-mini model</span>
+<span class="hljs-comment">// - LibSQL memory storage</span>
+<span class="hljs-comment">// - Dynamic MCP server management</span>
+</div></code></pre>
+<h3 id="mcp-server-management">MCP Server Management</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">// Add a new MCP server</span>
+<span class="hljs-keyword">await</span> addMcpServerTool.execute({
+  context: {
+    name: <span class="hljs-string">"websearch"</span>,
+    serverId: <span class="hljs-string">"@Aas-ee/open-websearch"</span>,
+    description: <span class="hljs-string">"Web search capabilities"</span>
+  }
+});
+
+<span class="hljs-comment">// List configured servers</span>
+<span class="hljs-keyword">await</span> listServersTool.execute({ context: {} });
+</div></code></pre>
+<h3 id="tool-schemas">Tool Schemas</h3>
+<p>All tools use Zod schemas for input validation:</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// Add MCP Server Tool</span>
+{
+  name: z.string().min(<span class="hljs-number">1</span>),
+  serverId: z.string().min(<span class="hljs-number">1</span>),
+  description: z.string().optional()
+}
+
+<span class="hljs-comment">// Discover Servers Tool</span>
+{
+  query: z.string().optional(),
+  pageSize: z.number().optional()
+}
+</div></code></pre>
+<h2 id="%F0%9F%8F%97%EF%B8%8F-project-structure">🏗️ Project Structure</h2>
+<pre class="hljs"><code><div>src/
+├── mastra/
+│   ├── agents/
+│   │   └── smart-mcp-agent.ts      # Main AI agent
+│   ├── tools/
+│   │   ├── add-mcp-server.ts       # Add MCP servers
+│   │   ├── discover-servers.ts     # Search Smithery registry
+│   │   └── list-servers.ts         # List configured servers
+│   ├── index.ts                    # Mastra configuration
+│   └── mcp.ts                      # MCP client configuration
+</div></code></pre>
+<h2 id="%F0%9F%94%84-workflow">🔄 Workflow</h2>
+<ol>
+<li><strong>Discovery</strong>: Use <code>discover-servers</code> to find MCP servers on Smithery</li>
+<li><strong>Installation</strong>: Use <code>add-mcp-server</code> to add servers to the configuration</li>
+<li><strong>Verification</strong>: Use <code>list-servers</code> to confirm installation</li>
+<li><strong>Usage</strong>: Access server tools through the agent</li>
+</ol>
+<h2 id="%F0%9F%9B%A1%EF%B8%8F-error-handling">🛡️ Error Handling</h2>
+<p>The template includes comprehensive error handling:</p>
+<ul>
+<li><strong>MCP Connection Failures</strong>: Graceful handling of server connection issues</li>
+<li><strong>File System Errors</strong>: Safe file operations with proper error messages</li>
+<li><strong>API Rate Limiting</strong>: Built-in retry logic for external API calls</li>
+<li><strong>Validation Errors</strong>: Zod schema validation with clear error messages</li>
+</ul>
+<h2 id="%F0%9F%94%A7-configuration">🔧 Configuration</h2>
+<h3 id="environment-variables">Environment Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+<th>Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>OPENAI_API_KEY</code></td>
+<td>OpenAI API key for agent model</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>ANTHROPIC_API_KEY</code></td>
+<td>Anthropic API key (alternative)</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>PERPLEXITY_API_KEY</code></td>
+<td>Perplexity API key for research</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>SMITHERY_API_KEY</code></td>
+<td>Smithery registry API key</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3 id="mcp-server-configuration">MCP Server Configuration</h3>
+<p>Servers are configured in <code>src/mastra/mcp.ts</code>:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> servers: Record&lt;<span class="hljs-built_in">string</span>, <span class="hljs-built_in">any</span>&gt; = {
+  textEditor: {
+    command: <span class="hljs-string">'npx'</span>,
+    args: [<span class="hljs-string">'-y'</span>, <span class="hljs-string">'@modelcontextprotocol/server-filesystem'</span>, path.join(process.cwd(), <span class="hljs-string">'..'</span>, <span class="hljs-string">'..'</span>)],
+  },
+  <span class="hljs-comment">// Agent-added servers appear here</span>
+};
+</div></code></pre>
+<h2 id="%F0%9F%A7%AA-testing">🧪 Testing</h2>
+<p>Test the agent functionality:</p>
+<ol>
+<li><strong>Start the server</strong>: <code>npm run dev</code></li>
+<li><strong>Open playground</strong>: Navigate to <code>http://localhost:4112</code></li>
+<li><strong>Test discovery</strong>: Ask &quot;Find web search servers&quot;</li>
+<li><strong>Test installation</strong>: Ask &quot;Add the web search server&quot;</li>
+<li><strong>Test listing</strong>: Ask &quot;What servers are configured?&quot;</li>
+</ol>
+<h2 id="%F0%9F%90%9B-troubleshooting">🐛 Troubleshooting</h2>
+<h3 id="common-issues">Common Issues</h3>
+<p><strong>MCP Server Connection Failures</strong></p>
+<ul>
+<li>Check if the server ID exists on Smithery</li>
+<li>Verify network connectivity</li>
+<li>Check server-specific requirements</li>
+</ul>
+<p><strong>File System Access Issues</strong></p>
+<ul>
+<li>Ensure proper file permissions</li>
+<li>Check path resolution in bundled environment</li>
+</ul>
+<p><strong>API Key Issues</strong></p>
+<ul>
+<li>Verify API keys are set in <code>.env</code></li>
+<li>Check API key permissions and quotas</li>
+</ul>
+<h3 id="debug-mode">Debug Mode</h3>
+<p>Enable debug logging by setting:</p>
+<pre class="hljs"><code><div>TASKMASTER_LOG_LEVEL=debug
+</div></code></pre>
+<h2 id="%F0%9F%93%9D-license">📝 License</h2>
+<p>ISC License</p>
+<h2 id="%F0%9F%A4%9D-contributing">🤝 Contributing</h2>
+<ol>
+<li>Fork the repository</li>
+<li>Create a feature branch</li>
+<li>Make your changes</li>
+<li>Add tests if applicable</li>
+<li>Submit a pull request</li>
+</ol>
+<h2 id="%F0%9F%93%9A-resources">📚 Resources</h2>
+<ul>
+<li><a href="https://mastra.ai/docs">Mastra Documentation</a></li>
+<li><a href="https://modelcontextprotocol.io/">MCP Protocol</a></li>
+<li><a href="https://smithery.ai/">Smithery Registry</a></li>
+<li><a href="https://zod.dev/">Zod Schema Validation</a></li>
+</ul>
+
+</body>
+</html>
